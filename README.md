@@ -4,12 +4,18 @@ Ligand hallucinations in cofolding methods. Methods to quantify common ligand ha
 # Introduction
 On common protein-ligand pose prediction benchmarks, cofolding methods such as alphafold 3 and boltz outperform or match molecular docking, the most commonly used traditional pose prediction method.
 
-Nonetheless, some unusual issues plague these new methods. The authors of AlphaFold3 already point out that asymmetric carbons are frequently inverted (4.4%) in the output of their method, but otherwise they manage to pass standard validity checks (PoseBusters). Surprisingly, we have found several examples where the input molecules (given as SMILES) did not match the output molecules (given as CIF). Some common problem motifs are: cyclohexanes (aromatized to benzenes), tetrahydrofurans (aromatized to furan), allenes, alkynes and nitriles (all 3 with non-linear structures). These can be considered an example of the “hallucination” phenomenon which is well known in other generative AI methods such as LLMs. These ligand hallucinations are also interesting because they subvert pose validation methods such as RMSD based checks compared to a reference.
+Nonetheless, some unusual issues plague these new methods. The authors of AlphaFold3 already point out that asymmetric carbons are frequently inverted (4.4%) in the output of their method, but otherwise they manage to pass standard validity checks (PoseBusters). Surprisingly, we have found several examples where the input molecules (given as SMILES) did not match the output molecules (given as CIF). Some common problem motifs are: cyclohexanes (aromatized to benzenes), tetrahydrofurans (aromatized to furan), allenes, alkynes and nitriles (all 3 with non-linear structures). These can be considered an example of the “hallucination” phenomenon which is well known in other generative AI methods such as LLMs. These ligand hallucinations are also interesting because they subvert pose validation methods such as RMSD based checks compared to a reference. An example of several hallucinations in one molecule after Boltz structure prediction is shown below:
+
+![image](https://github.com/user-attachments/assets/0055b7ab-f7da-4481-8b5a-ca8966938df8)
+
 
 We propose a method to systematically identify instances of cofolding ligand hallucinations by generating ligand structures, inferring their connectivity (using the input structure as a template) and comparing it to the input connectivity. We use this to compile a list of problematic functionalities which can be used to compare the extent of ligand hallucinations across cofolding methods.
 
 # Example use
 The jupyter notebook `Calculate_Example.ipynb` contains an example calculation of the hallucination rate for ETKDG+MMFF94(the reference) versus Vina (precalculated and provided as sdf) versus just ETKDG versus Boltz (precalculated and provided as sdf). This gives the following output, highlighting the higher hallucination rate of Boltz compared to traditional methods.
+
+![image](https://github.com/user-attachments/assets/48c2bcd7-d193-47ea-a6ea-588ae573b67f)
+
 
 # Working repo
 This is a preview version. Expect a more extended repo later, this repo just provides tha current version of the cofolding tricky ligand set as well as methods for conformation assessment. 
