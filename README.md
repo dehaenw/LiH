@@ -8,6 +8,9 @@ Nonetheless, some unusual issues plague these new methods. The authors of AlphaF
 
 We propose a method to systematically identify instances of cofolding ligand hallucinations by generating ligand structures, inferring their connectivity (using the input structure as a template) and comparing it to the input connectivity. We use this to compile a list of problematic functionalities which can be used to compare the extent of ligand hallucinations across cofolding methods.
 
+# Example use
+The jupyter notebook `Calculate_Example.ipynb` contains an example calculation of the hallucination rate for ETKDG+MMFF94(the reference) versus Vina (precalculated and provided as sdf) versus just ETKDG versus Boltz (precalculated and provided as sdf). This gives the following output, highlighting the higher hallucination rate of Boltz compared to traditional methods.
+
 # Working repo
 This is a preview version. Expect a more extended repo later, this repo just provides tha current version of the cofolding tricky ligand set as well as methods for conformation assessment. 
 
